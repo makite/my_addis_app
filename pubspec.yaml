@@ -1,0 +1,58 @@
+name: my_addis_app
+description: A Flutter project built with Riverflow CLI using Clean Architecture.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.9
+
+  # State Management
+  flutter_riverpod: ^3.3.1
+  riverpod_annotation: ^4.0.2
+
+  # Routing
+  go_router: ^17.2.3
+
+  # Networking
+  dio: ^5.9.2
+  connectivity_plus: ^7.1.1
+
+  # Storage
+  flutter_secure_storage: ^10.1.0
+
+  # Environment
+  flutter_dotenv: ^6.0.1
+
+  # Responsive
+  flutter_screenutil: ^5.9.3
+
+  # Logging
+  logger: ^2.7.0
+
+  # Code Generation Annotations
+  freezed_annotation: ^3.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Code Generation
+  build_runner: ^2.15.0
+  freezed: ^3.2.5
+  json_serializable: ^6.12.0
+  riverpod_generator: ^4.0.3
+
+  # Linting
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+    - assets/
