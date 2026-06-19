@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_addis_app/core/utils/image_constant.dart';
 import 'package:my_addis_app/features/home/presentation/viewmodels/home_viewmodel.dart';
+import 'package:my_addis_app/features/map/presentation/views/map_view.dart';
+import 'package:my_addis_app/features/profile/presentation/views/profile_view.dart';
+import 'package:my_addis_app/features/report/presentation/views/report_view.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
@@ -35,11 +38,9 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
     final pages = [
       _buildHomeScreen(theme, scheme),
-      _buildPlaceholder(scheme, 'Map', 'Find city services and navigation'),
-      _buildPlaceholder(
-          scheme, 'Report', 'Send a fast issue report to city teams'),
-      _buildPlaceholder(
-          scheme, 'Profile', 'Manage your profile and app settings'),
+      const MapView(),
+      const ReportView(),
+      const ProfileView(),
     ];
 
     return Scaffold(
@@ -384,42 +385,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
         style: TextStyle(
           color: background,
           fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPlaceholder(ColorScheme scheme, String title, String subtitle) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.explore_outlined,
-              size: 72,
-              color: scheme.primary,
-            ),
-            const SizedBox(height: 18),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-                color: scheme.onSurface,
-              ),
-            ),
-            const SizedBox(height: 12),
-            Text(
-              subtitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: scheme.onSurfaceVariant,
-                fontSize: 16,
-              ),
-            ),
-          ],
         ),
       ),
     );
