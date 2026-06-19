@@ -13,13 +13,7 @@ class _ReportViewState extends ConsumerState<ReportView> {
   String _selectedCategory = '';
   final TextEditingController _detailsController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => ref.read(reportViewModelProvider.notifier).loadCategories(),
-    );
-  }
+  // Initialization handled globally by appInitializerProvider
 
   @override
   void dispose() {

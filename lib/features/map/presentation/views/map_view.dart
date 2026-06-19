@@ -10,13 +10,7 @@ class MapView extends ConsumerStatefulWidget {
 }
 
 class _MapViewState extends ConsumerState<MapView> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => ref.read(mapViewModelProvider.notifier).loadData(),
-    );
-  }
+  // Initialization handled globally by appInitializerProvider
 
   @override
   Widget build(BuildContext context) {

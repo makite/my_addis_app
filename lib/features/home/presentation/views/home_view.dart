@@ -3,8 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_addis_app/core/utils/image_constant.dart';
 import 'package:my_addis_app/features/home/presentation/viewmodels/home_viewmodel.dart';
 import 'package:my_addis_app/features/map/presentation/views/map_view.dart';
+import 'package:my_addis_app/features/map/presentation/viewmodels/map_viewmodel.dart';
 import 'package:my_addis_app/features/profile/presentation/views/profile_view.dart';
+import 'package:my_addis_app/features/profile/presentation/viewmodels/profile_viewmodel.dart';
 import 'package:my_addis_app/features/report/presentation/views/report_view.dart';
+import 'package:my_addis_app/features/report/presentation/viewmodels/report_viewmodel.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
@@ -16,18 +19,26 @@ class HomeView extends ConsumerStatefulWidget {
 class _HomeViewState extends ConsumerState<HomeView> {
   int _selectedIndex = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => ref.read(homeViewModelProvider.notifier).loadData(),
-    );
-  }
-
   void _onTabSelected(int index) {
     setState(() {
       _selectedIndex = index;
     });
+
+    // Load data for the selected tab when the user switches tabs.
+    switch (index) {
+      case 0:
+        ref.read(homeViewModelProvider.notifier).loadData();
+        break;
+      case 1:
+        ref.read(mapViewModelProvider.notifier).loadData();
+        break;
+      case 2:
+        ref.read(reportViewModelProvider.notifier).loadCategories();
+        break;
+      case 3:
+        ref.read(profileViewModelProvider.notifier).loadData();
+        break;
+    }
   }
 
   @override

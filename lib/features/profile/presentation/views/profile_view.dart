@@ -10,13 +10,7 @@ class ProfileView extends ConsumerStatefulWidget {
 }
 
 class _ProfileViewState extends ConsumerState<ProfileView> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () => ref.read(profileViewModelProvider.notifier).loadData(),
-    );
-  }
+  // Initialization handled globally by appInitializerProvider
 
   @override
   Widget build(BuildContext context) {
